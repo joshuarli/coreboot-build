@@ -2,15 +2,15 @@
 
 coreboot build environment. supports at least (as far as I have tested):
 
-    - coreboot cross toolchain for i386 (git checkout at time of build)
-        - precompiled if you pull the image from docker hub!
-    - coreboot build for
-        - x200
-        - x201 tablet
-        - x220
-    - seaBIOS
-    - ifdtool
-    - me_cleaner
+- coreboot cross toolchain for i386 (git checkout at time of build)
+    - precompiled if you pull the image from docker hub!
+- coreboot build for
+    - x200
+    - x201 tablet
+    - x220
+- seaBIOS
+- ifdtool
+- me_cleaner
 
 
 ## x200
