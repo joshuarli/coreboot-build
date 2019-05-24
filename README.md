@@ -1,16 +1,20 @@
 # coreboot-build
 
-coreboot build environment. supports at least (as far as I have tested):
+coreboot build environment based on debian-unstable via docker. contains:
 
 - coreboot cross toolchain for i386 (git checkout at time of build)
-    - precompiled if you pull the image from docker hub!
-- coreboot build for
-    - x200
-    - x201 tablet
-    - x220
-- seaBIOS
-- ifdtool
-- me_cleaner
+- seaBIOS (git checkout at time of build)
+- ifdtool (in coreboot tree)
+- me_cleaner (in coreboot tree, pypy because i can)
+
+this isn't pinned to any coreboot git sha or debian version, on purpose - to potentially catch bugs.
+
+the latest docker image was built early may 2019. you can build the dockerfile yourself, if you want more recent stuff, but be aware compiling coreboot's cross toolchain takes a long time (a motivation).
+
+successfully builds coreboot roms for at least (as far as I have tested):
+
+- x201 tablet (at least may 2019 docker image)
+- x220 (at least may 2019 docker image)
 
 
 ## x200
