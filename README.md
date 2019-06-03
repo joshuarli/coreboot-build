@@ -15,6 +15,7 @@ successfully builds coreboot roms for at least (as far as I have tested):
 
 - x201 tablet (at least may 2019 docker image)
 - x220 (at least may 2019 docker image)
+- x230 (at least may 2019 docker image)
 
 
 ## x200
@@ -61,3 +62,24 @@ flash coreboot, for example:
 ## x220
 
 same general procedure as x201 tablet
+
+
+## x230
+
+connect spi programmer and read original flash from both chips, for example:
+
+    $ flashrom -p ch341a_spi -c MX25L3206E/MX25L3208E -r upper-original-bios.bin    
+    $ flashrom -p ch341a_spi -c MX25L6406E/MX25L6408E -r lower-intel-me.bin
+
+remember to read more than once and integrity check.
+
+similar procedure for shelling into the image and building coreboot. when you check the x230 mainboard menuconfig option, 12 MB size will be autofilled. leave it; a stub intel firmware descriptor will be built, which you need to discard post-build and create the 4 MB coreboot image:
+
+    (inside) $ dd if=build/coreboot.rom of=/out/coreboot.rom bs=1M skip=8
+
+neutralize intel me:
+
+    (inside) $ me_cleaner -S -O /out/lower-intel-me-neutralized.bin /out/lower-intel-me.bin
+    ^D
+
+flash coreboot and the neutralized intel me to their respective chips.
